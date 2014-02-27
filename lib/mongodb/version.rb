@@ -16,11 +16,11 @@ module MongoDB
     end
 
     def self.[](version)
-      self.new(version)
+      version.is_a?(Version) ? version : self.new(version)
     end
 
     def >(version)
-      version = Version[version] unless version.is_a?(Version)
+      version = Version[version]
       self.major > version.major && self.minor > version.minor && self.patch > version.patch
     end
 
@@ -45,7 +45,7 @@ module MongoDB
     end
 
     def ===(other)
-      self == other && special == other.special
+      self == other && special == Version[other].special
     end
 
     def compare(operators, other)
