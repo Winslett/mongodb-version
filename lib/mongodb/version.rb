@@ -19,11 +19,6 @@ module MongoDB
       version.is_a?(Version) ? version : self.new(version)
     end
 
-    def >(version)
-      version = Version[version]
-      self.major > version.major && self.minor > version.minor && self.patch > version.patch
-    end
-
     def >(other)
       compare([:>, :>, :>], other)
     end
