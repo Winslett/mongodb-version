@@ -3,13 +3,14 @@ require "mongodb/version/version"
 module MongoDB
 
   class Version
-    attr_reader :major, :minor, :patch, :special
+    attr_reader :version, :major, :minor, :patch, :special
 
     def initialize(version)
       raise "Nil versions are useless to me" if version.nil?
 
       @major, @minor, @patch, @special = version.match(/^([\d]+)\.([\d]+)\.([\d]+)(?:\-(.+))?$/).to_a[1..-1]
 
+      @version = version
       @major = @major.to_i
       @minor = @minor.to_i
       @patch = @patch.to_i
