@@ -36,6 +36,7 @@ describe MongoDB::Version do
     (MongoDB::Version['2.4.5'] <= MongoDB::Version['2.4.5-ssl']).should eq(true)
     (MongoDB::Version['2.4.7'] <= MongoDB::Version['2.4.5-ssl']).should eq(false)
 
+    (MongoDB::Version['2.2.3'] == MongoDB::Version['2.6.0']).should eq(false)
     (MongoDB::Version['2.4.6'] == MongoDB::Version['2.4.6-ssl']).should eq(true)
     (MongoDB::Version['2.4.6'] === MongoDB::Version['2.4.6-ssl']).should eq(false)
   end

@@ -37,7 +37,8 @@ module MongoDB
     end
 
     def ==(other)
-      compare([:==, :==, :==], other)
+      other = MongoDB::Version[other]
+      major == other.major && minor == other.minor && patch == other.patch
     end
 
     def ===(other)
